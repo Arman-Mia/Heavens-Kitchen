@@ -1,0 +1,975 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heavens Kitchen | Homely Indian & Chinese Cuisine | Kestopur, Kolkata</title>
+  <meta name="description" content="Budget-friendly eatery in Kestopur serving tasty & hygienic Indian and Chinese dishes. All-you-can-eat options, outdoor seating & fireplace. Open till 1 AM." />
+  <meta name="theme-color" content="#17110d" />
+  <meta property="og:title" content="Heavens Kitchen · Kestopur, Kolkata" />
+  <meta property="og:description" content="Homely Indian & Chinese food, outdoor seating, a fireplace and honest prices. Open till 1 AM." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1200&q=75" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2317110d'/><text x='32' y='44' font-family='Georgia' font-size='34' font-style='italic' text-anchor='middle' fill='%23e8a33d'>H</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Manrope:wght@400;500;600;700&family=Hind+Siliguri:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #17110d;
+      --ink-2: #211812;
+      --ink-3: #2c2119;
+      --cream: #f6ecdc;
+      --cream-dim: rgba(246, 236, 220, 0.68);
+      --cream-faint: rgba(246, 236, 220, 0.14);
+      --saffron: #e8a33d;
+      --saffron-soft: rgba(232, 163, 61, 0.14);
+      --chilli: #c8452c;
+      --leaf: #6f8f5a;
+      --paper: #f4ead9;
+      --paper-2: #ebdec9;
+      --brown: #3a2a1e;
+      --radius: 22px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Manrope', system-ui, sans-serif;
+      background: var(--ink);
+      color: var(--cream);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .logo, .serif { font-family: 'Fraunces', Georgia, serif; font-weight: 600; }
+    em { font-style: italic; color: var(--saffron); font-weight: 400; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2000;
+      opacity: 0.06;
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 1rem;
+    }
+    .eyebrow::before { content: ''; width: 28px; height: 1.5px; background: currentColor; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.95rem 1.7rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.3s var(--ease), background 0.3s, box-shadow 0.3s, color 0.3s;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+    }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-saffron { background: var(--saffron); color: var(--ink); }
+    .btn-saffron:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(232, 163, 61, 0.35); }
+    .btn-ghost { border-color: var(--cream-faint); color: var(--cream); }
+    .btn-ghost:hover { border-color: var(--saffron); color: var(--saffron); transform: translateY(-3px); }
+    .btn:active { transform: translateY(0) scale(0.98); }
+    .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 2px solid var(--saffron); outline-offset: 3px; }
+
+    /* ---------- NAV ---------- */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(23, 17, 13, 0.82);
+      backdrop-filter: blur(14px);
+      border-color: var(--cream-faint);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 1.35rem;
+      letter-spacing: -0.01em;
+    }
+    .logo-mark {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid var(--saffron);
+      display: grid;
+      place-items: center;
+      font-style: italic;
+      color: var(--saffron);
+      font-size: 1.15rem;
+    }
+    .logo i { font-weight: 400; color: var(--saffron); }
+    .nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; font-weight: 600; font-size: 0.92rem; }
+    .nav-links a:not(.btn) { color: var(--cream-dim); position: relative; transition: color 0.25s; }
+    .nav-links a:not(.btn)::after {
+      content: ''; position: absolute; left: 0; bottom: -4px;
+      width: 100%; height: 1.5px; background: var(--saffron);
+      transform: scaleX(0); transform-origin: right; transition: transform 0.35s var(--ease);
+    }
+    .nav-links a:not(.btn):hover { color: var(--cream); }
+    .nav-links a:not(.btn):hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav-links .btn { padding: 0.6rem 1.25rem; font-size: 0.88rem; }
+
+    .hamburger { display: none; background: none; border: none; cursor: pointer; width: 40px; height: 40px; position: relative; }
+    .hamburger span { position: absolute; left: 8px; width: 24px; height: 2px; background: var(--cream); border-radius: 2px; transition: 0.35s var(--ease); }
+    .hamburger span:nth-child(1) { top: 13px; }
+    .hamburger span:nth-child(2) { top: 19px; }
+    .hamburger span:nth-child(3) { top: 25px; }
+    .hamburger.active span:nth-child(1) { top: 19px; transform: rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { top: 19px; transform: rotate(-45deg); }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0 5rem;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 60% 50% at 78% 40%, rgba(200, 69, 44, 0.22), transparent 70%),
+        radial-gradient(ellipse 50% 60% at 10% 90%, rgba(232, 163, 61, 0.12), transparent 70%),
+        var(--ink);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-bn {
+      font-family: 'Hind Siliguri', sans-serif;
+      color: var(--saffron);
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+      opacity: 0.9;
+    }
+    .hero h1 {
+      font-size: clamp(2.9rem, 6.6vw, 5.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.6rem;
+    }
+    .hero h1 em { display: inline-block; }
+    .hero-sub { font-size: 1.12rem; color: var(--cream-dim); max-width: 470px; margin-bottom: 2.2rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-bottom: 3rem; }
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 2.4rem; padding-top: 1.8rem; border-top: 1px solid var(--cream-faint); max-width: 520px; }
+    .hero-facts div strong { display: block; font-family: 'Fraunces', serif; font-size: 1.9rem; font-weight: 600; line-height: 1.1; }
+    .hero-facts div span { font-size: 0.82rem; color: var(--cream-dim); letter-spacing: 0.04em; }
+
+    .open-pill {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      padding: 0.4rem 0.95rem 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: var(--cream-faint);
+      font-size: 0.82rem; font-weight: 600;
+      margin-bottom: 1.6rem;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #7fc46b; position: relative; }
+    .dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid #7fc46b; animation: ping 2s var(--ease) infinite; }
+    @keyframes ping { 0% { transform: scale(0.6); opacity: 1; } 100% { transform: scale(1.8); opacity: 0; } }
+
+    .collage { position: relative; height: 600px; }
+    .collage figure {
+      position: absolute;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--ink-3);
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+    }
+    .collage img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+    .collage figure:hover img { transform: scale(1.06); }
+    .c1 { top: 0; right: 0; width: 72%; height: 64%; border-radius: 200px 200px var(--radius) var(--radius) !important; }
+    .c2 { bottom: 0; left: 0; width: 50%; height: 50%; transform: rotate(-4deg); border: 6px solid var(--ink); }
+    .c3 { bottom: 4%; right: 6%; width: 38%; height: 34%; transform: rotate(5deg); border: 6px solid var(--ink); }
+    .sticker {
+      position: absolute;
+      top: 46%; left: 6%;
+      width: 132px; height: 132px;
+      border-radius: 50%;
+      background: var(--saffron);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      z-index: 3;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      animation: float 6s ease-in-out infinite;
+    }
+    .sticker strong { font-family: 'Fraunces', serif; font-size: 2.3rem; line-height: 1; display: block; }
+    .sticker span { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .sticker .stars { color: var(--chilli); letter-spacing: 1px; font-size: 0.8rem; display: block; margin: 2px 0; }
+    .sticker-ring { position: absolute; inset: -14px; animation: spin 18s linear infinite; }
+    .sticker-ring text { font-size: 10.5px; font-weight: 700; letter-spacing: 3.2px; fill: var(--saffron); text-transform: uppercase; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+    /* load-in */
+    .load { opacity: 0; transform: translateY(26px); animation: rise 1s var(--ease) forwards; }
+    .load.d1 { animation-delay: 0.1s; } .load.d2 { animation-delay: 0.22s; } .load.d3 { animation-delay: 0.34s; }
+    .load.d4 { animation-delay: 0.46s; } .load.d5 { animation-delay: 0.58s; } .load.d6 { animation-delay: 0.7s; }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+    .collage .load { animation-duration: 1.3s; }
+    .c2.load { --r: -4deg; } .c3.load { --r: 5deg; }
+    .c2.load, .c3.load { animation-name: rise-rot; }
+    @keyframes rise-rot { from { opacity: 0; transform: translateY(40px) rotate(0); } to { opacity: 1; transform: translateY(0) rotate(var(--r)); } }
+
+    /* ---------- MARQUEE ---------- */
+    .marquee {
+      background: var(--saffron);
+      color: var(--ink);
+      padding: 1.05rem 0;
+      overflow: hidden;
+      transform: rotate(-1.2deg);
+      margin: -1.5rem -2rem 0;
+      position: relative;
+      z-index: 5;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+    .marquee-track { display: flex; width: max-content; animation: scroll 38s linear infinite; }
+    .marquee-track span {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      white-space: nowrap;
+      padding: 0 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 2.8rem;
+    }
+    .marquee-track span::after { content: '✦'; font-style: normal; font-size: 0.9rem; color: var(--chilli); }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    /* ---------- SECTIONS ---------- */
+    .section { padding: 8rem 0; position: relative; }
+    .section-title { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1.2rem; }
+    .lead { color: var(--cream-dim); font-size: 1.06rem; max-width: 520px; }
+
+    /* light paper section */
+    .paper { background: var(--paper); color: var(--brown); }
+    .paper .lead { color: rgba(58, 42, 30, 0.72); }
+    .paper .eyebrow { color: var(--chilli); }
+    .paper em { color: var(--chilli); }
+
+    /* ---------- ABOUT ---------- */
+    .about-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 5rem; align-items: center; }
+    .about-photo { position: relative; }
+    .about-photo .frame { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--paper-2); }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-photo .inset {
+      position: absolute;
+      right: -2.5rem; bottom: -2.5rem;
+      width: 46%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 8px solid var(--paper);
+      box-shadow: 0 20px 50px rgba(58, 42, 30, 0.25);
+    }
+    .about-photo .inset img { width: 100%; height: 100%; object-fit: cover; }
+    .about-photo .tag {
+      position: absolute; top: 1.5rem; left: -1.5rem;
+      background: var(--ink); color: var(--cream);
+      padding: 0.8rem 1.2rem; border-radius: 14px;
+      font-size: 0.85rem; font-weight: 600;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .about-photo .tag svg { width: 20px; height: 20px; color: var(--saffron); }
+    .about-text p { margin-bottom: 1.1rem; }
+    .about-text .lead { margin-bottom: 1.1rem; }
+    .signature { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.4rem; color: var(--chilli); margin-top: 1.6rem; }
+
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 2.6rem; border-top: 1.5px solid rgba(58, 42, 30, 0.15); }
+    .stat { padding: 1.4rem 0 0; }
+    .stat + .stat { padding-left: 1.4rem; border-left: 1.5px solid rgba(58, 42, 30, 0.15); }
+    .stat strong { font-family: 'Fraunces', serif; font-size: 2.4rem; line-height: 1; display: block; font-weight: 600; }
+    .stat span { font-size: 0.82rem; color: rgba(58, 42, 30, 0.65); }
+
+    /* ---------- MENU ---------- */
+    .menu-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 3.5rem; flex-wrap: wrap; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 270px;
+      gap: 1.25rem;
+    }
+    .dish {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--ink-3);
+      isolation: isolate;
+      cursor: default;
+    }
+    .dish img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1s var(--ease); }
+    .dish::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(23,17,13,0) 30%, rgba(23,17,13,0.92) 100%); }
+    .dish:hover img { transform: scale(1.07); }
+    .dish-body { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.6rem 1.7rem; }
+    .dish-num { position: absolute; top: 1.3rem; left: 1.5rem; font-family: 'Fraunces', serif; font-style: italic; font-size: 0.95rem; color: var(--cream); opacity: 0.85; }
+    .dish-label {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      background: rgba(23, 17, 13, 0.6); backdrop-filter: blur(8px);
+      padding: 0.4rem 0.75rem; border-radius: 999px; color: var(--saffron);
+    }
+    .dish h3 { font-size: 1.55rem; line-height: 1.15; margin-bottom: 0.35rem; letter-spacing: -0.01em; }
+    .dish p { font-size: 0.9rem; color: var(--cream-dim); max-width: 380px; transition: opacity 0.4s, transform 0.4s var(--ease); }
+    .dish.big h3 { font-size: 2.2rem; }
+    .b1 { grid-column: span 7; grid-row: span 2; }
+    .b2 { grid-column: span 5; }
+    .b3 { grid-column: span 5; }
+    .b4 { grid-column: span 4; }
+    .b5 { grid-column: span 4; }
+    .b6 { grid-column: span 4; }
+
+    .menu-note { margin-top: 2.5rem; display: flex; align-items: center; justify-content: center; gap: 0.75rem; color: var(--cream-dim); font-size: 0.92rem; text-align: center; }
+    .menu-note strong { color: var(--saffron); }
+
+    /* ---------- EXPERIENCE ---------- */
+    .exp { background: var(--ink-2); overflow: hidden; }
+    .exp-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 5rem; align-items: start; }
+    .exp-sticky { position: sticky; top: 7rem; }
+    .exp-list { display: grid; gap: 1rem; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 1.4rem;
+      align-items: start;
+      padding: 1.8rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--cream-faint);
+      background: linear-gradient(135deg, rgba(246, 236, 220, 0.03), transparent);
+      transition: border-color 0.4s, transform 0.4s var(--ease), background 0.4s;
+    }
+    .exp-item:hover { border-color: rgba(232, 163, 61, 0.5); transform: translateX(8px); background: linear-gradient(135deg, var(--saffron-soft), transparent); }
+    .exp-icon { width: 64px; height: 64px; border-radius: 18px; background: var(--saffron-soft); display: grid; place-items: center; color: var(--saffron); }
+    .exp-icon svg { width: 30px; height: 30px; }
+    .exp-item h3 { font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .exp-item p { color: var(--cream-dim); font-size: 0.95rem; }
+
+    /* ---------- REVIEWS ---------- */
+    .reviews { background: var(--paper); color: var(--brown); }
+    .reviews-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 1.5rem; margin-top: 3.5rem; }
+    .quote-big {
+      grid-row: span 2;
+      background: var(--chilli);
+      color: var(--cream);
+      border-radius: var(--radius);
+      padding: 3.2rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+      position: relative; overflow: hidden;
+    }
+    .quote-big::before {
+      content: '“'; position: absolute; top: -3.5rem; right: 1.5rem;
+      font-family: 'Fraunces', serif; font-size: 16rem; line-height: 1; opacity: 0.16;
+    }
+    .quote-big blockquote { font-family: 'Fraunces', serif; font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.2; letter-spacing: -0.015em; margin: 1.5rem 0 2.5rem; }
+    .quote-small { background: #fffaf1; border: 1px solid rgba(58, 42, 30, 0.1); border-radius: var(--radius); padding: 2.2rem; transition: transform 0.4s var(--ease), box-shadow 0.4s; }
+    .quote-small:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(58, 42, 30, 0.12); }
+    .quote-small blockquote { font-family: 'Fraunces', serif; font-size: 1.35rem; line-height: 1.3; margin: 1rem 0 1.4rem; }
+    .stars-row { color: var(--saffron); letter-spacing: 3px; font-size: 1.05rem; }
+    .quote-big .stars-row { color: #ffd38a; }
+    .reviewer { display: flex; align-items: center; gap: 0.8rem; font-size: 0.88rem; font-weight: 600; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-family: 'Fraunces', serif; font-weight: 600; background: var(--paper-2); color: var(--brown); }
+    .quote-big .avatar { background: rgba(246, 236, 220, 0.2); color: var(--cream); }
+    .reviewer small { display: block; font-weight: 500; opacity: 0.65; }
+    .rating-summary { display: flex; align-items: center; gap: 1.2rem; }
+    .rating-summary strong { font-family: 'Fraunces', serif; font-size: 3.6rem; line-height: 1; }
+    .rating-summary span { font-size: 0.9rem; color: rgba(58, 42, 30, 0.7); }
+
+    /* ---------- VISIT ---------- */
+    .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3.5rem; }
+    .visit-card { background: var(--ink-2); border: 1px solid var(--cream-faint); border-radius: var(--radius); padding: 2.6rem; }
+    .visit-row { display: grid; grid-template-columns: 44px 1fr; gap: 1rem; padding: 1.3rem 0; border-bottom: 1px solid var(--cream-faint); }
+    .visit-row:first-of-type { padding-top: 0; }
+    .visit-row:last-of-type { border-bottom: none; }
+    .visit-row .ic { width: 44px; height: 44px; border-radius: 12px; background: var(--saffron-soft); color: var(--saffron); display: grid; place-items: center; }
+    .visit-row .ic svg { width: 20px; height: 20px; }
+    .visit-row h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--cream-dim); font-weight: 700; margin-bottom: 0.2rem; }
+    .visit-row p, .visit-row a { font-size: 1.02rem; font-weight: 500; }
+    .visit-row a:hover { color: var(--saffron); }
+    .visit-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.8rem; }
+    .map {
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 440px;
+      border: 1px solid var(--cream-faint);
+      background: var(--ink-3);
+      position: relative;
+    }
+    .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: grayscale(0.4) sepia(0.25) contrast(1.05); }
+
+    /* ---------- CTA BAND ---------- */
+    .cta-band {
+      position: relative;
+      padding: 9rem 0;
+      text-align: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .cta-band img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+    .cta-band::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at center, rgba(23,17,13,0.65), rgba(23,17,13,0.94)); }
+    .cta-band h2 { font-size: clamp(2.6rem, 7vw, 5.4rem); line-height: 1; letter-spacing: -0.035em; margin-bottom: 1.4rem; }
+    .cta-band p { color: var(--cream-dim); max-width: 460px; margin: 0 auto 2.4rem; font-size: 1.08rem; }
+    .cta-band .hero-actions { justify-content: center; margin-bottom: 0; }
+
+    /* ---------- FOOTER ---------- */
+    footer { background: #120d0a; padding: 4.5rem 0 2rem; color: var(--cream-dim); }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3.5rem; }
+    .footer-brand .logo { color: var(--cream); margin-bottom: 1.1rem; }
+    .footer-brand p { max-width: 320px; font-size: 0.92rem; }
+    footer h4 { color: var(--cream); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.18em; margin-bottom: 1.2rem; }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 0.6rem; font-size: 0.92rem; }
+    footer a:hover { color: var(--saffron); }
+    .footer-bottom { padding-top: 1.8rem; border-top: 1px solid var(--cream-faint); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-size: 0.84rem; }
+    .footer-word { font-family: 'Fraunces', serif; font-size: clamp(3rem, 13vw, 11rem); line-height: 0.85; letter-spacing: -0.05em; color: rgba(246, 236, 220, 0.05); text-align: center; margin-top: 2.5rem; user-select: none; white-space: nowrap; }
+
+    /* floating call (mobile) */
+    .fab {
+      position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 1100;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: var(--saffron); color: var(--ink);
+      display: none; place-items: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+    .fab svg { width: 24px; height: 24px; }
+
+    /* scroll reveal */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.r2 { transition-delay: 0.12s; } .reveal.r3 { transition-delay: 0.24s; } .reveal.r4 { transition-delay: 0.36s; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1000px) {
+      .hero-grid, .about-grid, .exp-grid, .visit-grid, .reviews-grid { grid-template-columns: 1fr; }
+      .collage { height: 480px; max-width: 560px; width: 100%; margin: 0 auto; }
+      .about-grid { gap: 4.5rem; }
+      .about-photo { max-width: 480px; }
+      .exp-sticky { position: static; }
+      .exp-grid { gap: 3rem; }
+      .quote-big { grid-row: auto; }
+      .b1 { grid-column: span 12; }
+      .b2, .b3 { grid-column: span 6; }
+      .b4, .b5, .b6 { grid-column: span 6; }
+      .b6 { grid-column: span 12; }
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        position: fixed;
+        inset: 0;
+        background: var(--ink);
+        flex-direction: column;
+        justify-content: center;
+        gap: 1.8rem;
+        font-size: 1.5rem;
+        font-family: 'Fraunces', serif;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s var(--ease);
+        z-index: -1;
+      }
+      .nav-links.open { opacity: 1; pointer-events: auto; }
+      .nav.menu-open { backdrop-filter: none; background: var(--ink); }
+      .nav-links .btn { font-family: 'Manrope', sans-serif; font-size: 1rem; padding: 0.9rem 1.8rem; }
+      .hamburger { display: block; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .fab { display: grid; }
+      .section { padding: 6rem 0; }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding-top: 7rem; }
+      .hero-actions .btn { flex: 1 1 100%; justify-content: center; }
+      .hero-facts { gap: 1.6rem; }
+      .collage { height: 380px; }
+      .sticker { width: 104px; height: 104px; left: 0; }
+      .sticker strong { font-size: 1.8rem; }
+      .bento { grid-auto-rows: 240px; }
+      .b1, .b2, .b3, .b4, .b5, .b6 { grid-column: span 12; grid-row: span 1; }
+      .dish.big h3 { font-size: 1.7rem; }
+      .about-photo .inset { right: -0.5rem; bottom: -2rem; }
+      .about-photo .tag { left: 0.8rem; }
+      .stats { grid-template-columns: 1fr 1fr 1fr; }
+      .stat strong { font-size: 1.8rem; }
+      .stat + .stat { padding-left: 0.9rem; }
+      .quote-big, .visit-card { padding: 2rem; }
+      .exp-item { grid-template-columns: 1fr; padding: 1.5rem; }
+      .map { min-height: 320px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .load, .reveal { opacity: 1; transform: none; }
+      .c2.load { transform: rotate(-4deg); } .c3.load { transform: rotate(5deg); }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="logo" aria-label="Heavens Kitchen home">
+        <span class="logo-mark">H</span>
+        <span>Heavens <i>Kitchen</i></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="tel:+916291246686" class="btn btn-saffron">Call to Order</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <div class="open-pill load d1"><span class="dot"></span> Open today · Serving till 1 AM</div>
+        <p class="hero-bn load d1" lang="bn">স্বাগতম · Kestopur, Kolkata</p>
+        <h1 class="load d2">Homely food,<br /><em>heavenly</em> flavour.</h1>
+        <p class="hero-sub load d3">
+          Fresh, hygienic Indian &amp; Chinese favourites at honest prices — with outdoor
+          seating, a crackling fireplace and a kitchen that stays open late.
+        </p>
+        <div class="hero-actions load d4">
+          <a href="#menu" class="btn btn-saffron">
+            Explore the Menu
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="tel:+916291246686" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+            062912 46686
+          </a>
+        </div>
+        <div class="hero-facts load d5">
+          <div><strong>4.2★</strong><span>288 Google reviews</span></div>
+          <div><strong>₹200</strong><span>or less per person</span></div>
+          <div><strong>1 AM</strong><span>Open daily till</span></div>
+        </div>
+      </div>
+
+      <div class="collage" aria-hidden="true">
+        <figure class="c1 load d2"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=900&q=75" alt="" /></figure>
+        <figure class="c2 load d4"><img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=75" alt="" /></figure>
+        <figure class="c3 load d5"><img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=500&q=75" alt="" /></figure>
+        <div class="sticker load d6">
+          <svg class="sticker-ring" viewBox="0 0 160 160">
+            <defs><path id="circ" d="M80,80 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0" /></defs>
+            <text><textPath href="#circ">Loved by locals · Kestopur · Since day one ·</textPath></text>
+          </svg>
+          <div>
+            <strong>4.2</strong>
+            <span class="stars">★★★★☆</span>
+            <span>Google</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Egg Chicken Garlic Chow</span><span>Pan Fry Momo</span><span>Homestyle Thali</span><span>Indo-Chinese Combos</span><span>All You Can Eat</span><span>Outdoor Seating</span><span>Fireplace Evenings</span><span>Open Till 1 AM</span>
+      <span>Egg Chicken Garlic Chow</span><span>Pan Fry Momo</span><span>Homestyle Thali</span><span>Indo-Chinese Combos</span><span>All You Can Eat</span><span>Outdoor Seating</span><span>Fireplace Evenings</span><span>Open Till 1 AM</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section paper" id="about">
+    <div class="container about-grid">
+      <div class="about-photo reveal">
+        <div class="frame">
+          <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=75" alt="A homestyle Indian thali with naan, curries and dal" loading="lazy" />
+        </div>
+        <div class="inset">
+          <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=75" alt="Crispy golden samosas" loading="lazy" />
+        </div>
+        <div class="tag">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+          Fresh &amp; hygienic, always
+        </div>
+      </div>
+
+      <div class="about-text">
+        <span class="eyebrow reveal">Our Story</span>
+        <h2 class="section-title reveal r2">A neighbourhood kitchen that <em>feels like home.</em></h2>
+        <p class="lead reveal r3">
+          Tucked near the 206 Foot Bridge in Samarpally, Kestopur, Heavens Kitchen is where locals
+          come for tasty Indian and Chinese food that doesn’t burn a hole in the pocket.
+        </p>
+        <p class="reveal r3">
+          From garlic-tossed chowmein and pan-fried momos to a wholesome everyday thali, every plate
+          is cooked fresh, served hot and kept spotlessly clean. Stay for the open-air seating and
+          the warm glow of the fireplace — evenings here are made for friends and family.
+        </p>
+        <p class="signature reveal r4">— Good food. Warm service. Honest prices.</p>
+
+        <div class="stats reveal r4">
+          <div class="stat"><strong data-count="4.2" data-decimals="1">4.2</strong><span>Average rating</span></div>
+          <div class="stat"><strong data-count="288">288</strong><span>Google reviews</span></div>
+          <div class="stat"><strong>₹1–200</strong><span>Per person</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section class="section" id="menu">
+    <div class="container">
+      <div class="menu-head">
+        <div>
+          <span class="eyebrow reveal">Crowd Favourites</span>
+          <h2 class="section-title reveal r2">What everyone<br /><em>keeps ordering.</em></h2>
+        </div>
+        <p class="lead reveal r3">Indian classics and Indo-Chinese comfort food — the dishes our regulars come back for, night after night.</p>
+      </div>
+
+      <div class="bento">
+        <article class="dish big b1 reveal">
+          <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=1100&q=75" alt="Garlic chowmein noodles" loading="lazy" />
+          <span class="dish-num">No. 01</span>
+          <span class="dish-label">Signature</span>
+          <div class="dish-body">
+            <h3>Egg Chicken Garlic Chow</h3>
+            <p>Wok-tossed noodles with egg, tender chicken and a generous hit of garlic — aromatic, smoky and seriously addictive.</p>
+          </div>
+        </article>
+
+        <article class="dish b2 reveal r2">
+          <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=75" alt="Pan-fried momos" loading="lazy" />
+          <span class="dish-num">No. 02</span>
+          <span class="dish-label">Must Try</span>
+          <div class="dish-body">
+            <h3>Pan Fry Momo</h3>
+            <p>Golden, crisp-bottomed momos with a juicy filling and fiery chutney.</p>
+          </div>
+        </article>
+
+        <article class="dish b3 reveal r3">
+          <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=75" alt="Indian thali" loading="lazy" />
+          <span class="dish-num">No. 03</span>
+          <span class="dish-label">Everyday</span>
+          <div class="dish-body">
+            <h3>Homestyle Indian Thali</h3>
+            <p>A complete, comforting meal — just like it’s made at home.</p>
+          </div>
+        </article>
+
+        <article class="dish b4 reveal">
+          <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=700&q=75" alt="Indo-Chinese noodles" loading="lazy" />
+          <span class="dish-num">No. 04</span>
+          <span class="dish-label">Shareable</span>
+          <div class="dish-body">
+            <h3>Indo-Chinese Combos</h3>
+            <p>Chowmein, chilli dishes &amp; more — built for sharing.</p>
+          </div>
+        </article>
+
+        <article class="dish b5 reveal r2">
+          <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=700&q=75" alt="Rich Indian curries" loading="lazy" />
+          <span class="dish-num">No. 05</span>
+          <span class="dish-label">Indian</span>
+          <div class="dish-body">
+            <h3>Rich Curries</h3>
+            <p>Slow-simmered gravies, best with rice or roti.</p>
+          </div>
+        </article>
+
+        <article class="dish b6 reveal r3">
+          <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=700&q=75" alt="Steamed momos" loading="lazy" />
+          <span class="dish-num">No. 06</span>
+          <span class="dish-label">Value</span>
+          <div class="dish-body">
+            <h3>All You Can Eat</h3>
+            <p>Come hungry — value-packed spreads for big appetites.</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="menu-note reveal">
+        Most plates are <strong>under ₹200</strong> · Call <a href="tel:+916291246686"><strong>062912 46686</strong></a> for today’s full menu
+      </p>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section exp" id="experience">
+    <div class="container exp-grid">
+      <div class="exp-sticky">
+        <span class="eyebrow reveal">The Experience</span>
+        <h2 class="section-title reveal r2">More than a meal — <em>a place to linger.</em></h2>
+        <p class="lead reveal r3">Pull up a chair under the open sky, warm your hands by the fire, and let the evening run late. We’ll keep the kitchen going till 1 AM.</p>
+      </div>
+
+      <div class="exp-list">
+        <div class="exp-item reveal">
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h18M5 11a7 7 0 0 1 14 0M12 4V2M4 15h16l-1.5 5h-13z"/></svg>
+          </div>
+          <div>
+            <h3>All You Can Eat</h3>
+            <p>Value-packed, fill-your-plate options for when one helping just isn’t enough.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal r2">
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.4 5.1-6C9.5 14.5 12 13 13 12"/></svg>
+          </div>
+          <div>
+            <h3>Outdoor Seating</h3>
+            <p>Fresh air, open sky and a relaxed vibe — perfect for casual hangouts.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal r3">
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3.2.3 1.6 1.2 2.7 2.5 2.7z"/></svg>
+          </div>
+          <div>
+            <h3>Fireplace Evenings</h3>
+            <p>Cosy up by the fire on cool Kolkata nights with a hot plate of momos.</p>
+          </div>
+        </div>
+        <div class="exp-item reveal r4">
+          <div class="exp-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12M6 8h12M6 13l8.5 8M6 13h3c6.7 0 6.7-10 0-10"/></svg>
+          </div>
+          <div>
+            <h3>Budget Friendly</h3>
+            <p>Generous portions at ₹1–200 per person. Great food shouldn’t be a luxury.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section reviews" id="reviews">
+    <div class="container">
+      <div class="menu-head">
+        <div>
+          <span class="eyebrow reveal">What Guests Say</span>
+          <h2 class="section-title reveal r2">Loved by <em>locals.</em></h2>
+        </div>
+        <div class="rating-summary reveal r3">
+          <strong>4.2</strong>
+          <div>
+            <div class="stars-row">★★★★☆</div>
+            <span>Based on 288 Google reviews</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <figure class="quote-big reveal">
+          <div class="stars-row">★★★★★</div>
+          <blockquote>“Tasty and hygienic homely food served here.”</blockquote>
+          <figcaption class="reviewer"><span class="avatar">G</span><div>Google Reviewer<small>Verified review</small></div></figcaption>
+        </figure>
+        <figure class="quote-small reveal r2">
+          <div class="stars-row">★★★★☆</div>
+          <blockquote>“Good food, nice staff behaviour.”</blockquote>
+          <figcaption class="reviewer"><span class="avatar">G</span><div>Google Reviewer<small>Verified review</small></div></figcaption>
+        </figure>
+        <figure class="quote-small reveal r3">
+          <div class="stars-row">★★★★☆</div>
+          <blockquote>“Budget-friendly spot with outdoor seating. Perfect for a casual meal.”</blockquote>
+          <figcaption class="reviewer"><span class="avatar">L</span><div>Local Guest<small>Kestopur</small></div></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="section" id="visit">
+    <div class="container">
+      <span class="eyebrow reveal">Find Us</span>
+      <h2 class="section-title reveal r2">Drop by <em>tonight.</em></h2>
+
+      <div class="visit-grid">
+        <div class="visit-card reveal">
+          <div class="visit-row">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div><h4>Address</h4><p>Near 206 Foot Bridge, SA Block, Samarpally, Krishnapur, Kestopur, Kolkata, West Bengal 700102</p></div>
+          </div>
+          <div class="visit-row">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <div><h4>Hours</h4><p>Open every day · Closes at 1:00 AM</p></div>
+          </div>
+          <div class="visit-row">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <div><h4>Phone</h4><a href="tel:+916291246686">062912 46686</a></div>
+          </div>
+          <div class="visit-row">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></span>
+            <div><h4>Price</h4><p>₹1 – 200 per person</p></div>
+          </div>
+          <div class="visit-actions">
+            <a href="https://www.google.com/maps/search/?api=1&query=Heavens+Kitchen+Kestopur+Kolkata" target="_blank" rel="noopener" class="btn btn-saffron">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2z"/></svg>
+              Get Directions
+            </a>
+            <a href="tel:+916291246686" class="btn btn-ghost">Call Now</a>
+          </div>
+        </div>
+
+        <div class="map reveal r2">
+          <iframe
+            title="Map showing Heavens Kitchen, Kestopur"
+            src="https://maps.google.com/maps?q=Heavens%20Kitchen%20Kestopur%20Kolkata&z=15&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=70" alt="" loading="lazy" />
+    <div class="container">
+      <span class="eyebrow reveal">Hungry already?</span>
+      <h2 class="reveal r2">Come hungry.<br /><em>Leave happy.</em></h2>
+      <p class="reveal r3">Walk in, call ahead or bring the whole gang — there’s always a warm plate waiting at Heavens Kitchen.</p>
+      <div class="hero-actions reveal r4">
+        <a href="tel:+916291246686" class="btn btn-saffron">Call 062912 46686</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Heavens+Kitchen+Kestopur+Kolkata" target="_blank" rel="noopener" class="btn btn-ghost">Open in Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#top" class="logo"><span class="logo-mark">H</span><span>Heavens <i>Kitchen</i></span></a>
+          <p>Budget-friendly Indian &amp; Chinese eatery in Kestopur. Homely food, warm service, open till late.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+916291246686">062912 46686</a></li>
+            <li>Kestopur, Kolkata 700102</li>
+            <li>Open daily · Closes 1 AM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year">2026</span> Heavens Kitchen. All rights reserved.</span>
+        <span>Made with love in Kolkata</span>
+      </div>
+      <div class="footer-word" aria-hidden="true">Heavens Kitchen</div>
+    </div>
+  </footer>
+
+  <a href="tel:+916291246686" class="fab" aria-label="Call Heavens Kitchen">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+  </a>
+
+  <script>
+    // Nav background on scroll
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 30);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    const setMenu = (open) => {
+      navLinks.classList.toggle('open', open);
+      hamburger.classList.toggle('active', open);
+      nav.classList.toggle('menu-open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    hamburger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+
+    // Scroll reveal + count-up
+    const countUp = (el) => {
+      const target = parseFloat(el.dataset.count);
+      const decimals = parseInt(el.dataset.decimals || '0', 10);
+      const start = performance.now();
+      const tick = (now) => {
+        const p = Math.min((now - start) / 1400, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(decimals);
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        entry.target.querySelectorAll('[data-count]').forEach(countUp);
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
